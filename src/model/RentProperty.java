@@ -9,5 +9,5 @@ package model;
  * @author shraavyarao
  */
 public class RentProperty {
-    
+ //branch   
 }
