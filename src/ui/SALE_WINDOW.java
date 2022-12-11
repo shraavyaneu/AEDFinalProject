@@ -498,13 +498,58 @@ public class SALE_WINDOW extends javax.swing.JFrame {
 
     private void jButton_Add_SaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add_SaleActionPerformed
 
-       
+       try
+        {
+            int propertyId = Integer.valueOf(jTextField_PropertyID.getText());
+            int clientId = Integer.valueOf(jTextField_ClientID.getText());
+            String finalPrice = jTextField_FinalPrice.getText();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String sellingate = dateFormat.format(jDateChooser_SaleDate.getDate());
+
+            P_SALE sale = new P_SALE(0, propertyId, clientId, finalPrice, sellingate);
+
+            if(new P_SALE().addNewSale(sale))
+            {
+                JOptionPane.showMessageDialog(null, "A New Sale Has Been Created and Added", "Add Sale", 1);
+            }
+            else{
+                   JOptionPane.showMessageDialog(null, "Sale Not Created", "Add Sale", 2);
+                }
+
+        }catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Select The Property Id, Client Id and The Sale Date", "Add Sale Error", 2);
+        }
+        
         
     }//GEN-LAST:event_jButton_Add_SaleActionPerformed
 
     private void jButton_Edit_SaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Edit_SaleActionPerformed
 
-       
+       try
+       {
+             int id = Integer.valueOf(jTextField_Id.getText());
+             int propertyId = Integer.valueOf(jTextField_PropertyID.getText());
+             int clientId = Integer.valueOf(jTextField_ClientID.getText());
+             String finalPrice = jTextField_FinalPrice.getText();
+             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+             String sellingate = dateFormat.format(jDateChooser_SaleDate.getDate());
+
+             P_SALE sale = new P_SALE(id, propertyId, clientId, finalPrice, sellingate);
+
+             if(new P_SALE().editSale(sale))
+             {
+                 JOptionPane.showMessageDialog(null, "Sale Data Has Been Updated", "Edit Sale", 1);
+             }
+             else{
+                    JOptionPane.showMessageDialog(null, "Sale Data Not Updated", "Edit Sale", 2);
+                 }
+       }
+       catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Select The Sale Id, Client Id and The Sale Date", "Edit Sale Error", 2);
+        } 
+        
         
     }//GEN-LAST:event_jButton_Edit_SaleActionPerformed
 
@@ -528,49 +573,98 @@ try{
 
     private void jTable_PropertiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_PropertiesMouseClicked
 
-        
+        int selectedRowIndex = jTable_Properties.getSelectedRow();
+        jTextField_PropertyID.setText(jTable_Properties.getValueAt(selectedRowIndex, 0).toString());
+        jTextField_FinalPrice.setText(jTable_Properties.getValueAt(selectedRowIndex, 2).toString());
     }//GEN-LAST:event_jTable_PropertiesMouseClicked
 
     private void jTable_ClientsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_ClientsMouseClicked
-        
+        int selectedRowIndex = jTable_Clients.getSelectedRow();
+        jTextField_ClientID.setText(jTable_Clients.getValueAt(selectedRowIndex, 0).toString());
     }//GEN-LAST:event_jTable_ClientsMouseClicked
 
     private void jTable_SalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_SalesMouseClicked
        
+         int selectedRowIndex = jTable_Sales.getSelectedRow();
+        jTextField_Id.setText(jTable_Sales.getValueAt(selectedRowIndex, 0).toString());
+        jTextField_PropertyID.setText(jTable_Sales.getValueAt(selectedRowIndex, 1).toString());
+        jTextField_ClientID.setText(jTable_Sales.getValueAt(selectedRowIndex, 2).toString());
+        jTextField_FinalPrice.setText(jTable_Sales.getValueAt(selectedRowIndex, 3).toString());
         
+        Date saleDate;
+        try {
+            saleDate = new SimpleDateFormat("yyyy-MM-dd").parse(jTable_Sales.getValueAt(selectedRowIndex, 4).toString());
+            jDateChooser_SaleDate.setDate(saleDate);
+        } catch (ParseException ex) {
+            Logger.getLogger(SALE_WINDOW.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jTable_SalesMouseClicked
 
     private void jButton_Refresh_Sales_TableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Refresh_Sales_TableActionPerformed
         
-      
+       fillJtableSales();
     }//GEN-LAST:event_jButton_Refresh_Sales_TableActionPerformed
 
     private void jButton_Refresh_Clients_TableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Refresh_Clients_TableActionPerformed
         
-        
+         fillJtableClients();
     }//GEN-LAST:event_jButton_Refresh_Clients_TableActionPerformed
 
     private void jButton_Add_ClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add_ClientActionPerformed
-        
+         
+        CLIENT_WINDOW clientform = new CLIENT_WINDOW();
+        clientform.setVisible(true);
+        clientform.pack();        
+        clientform.setLocationRelativeTo(null);
+        clientform.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
      
         
     }//GEN-LAST:event_jButton_Add_ClientActionPerformed
 
     private void jButton_Refresh_Properties_TableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Refresh_Properties_TableActionPerformed
-        
+        fillJtableProperties();
     }//GEN-LAST:event_jButton_Refresh_Properties_TableActionPerformed
 
     private void jButton_Add_PropertyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add_PropertyActionPerformed
         
-       
+        PROPERTY_WINDOW propertyform = new PROPERTY_WINDOW();
+        propertyform.setVisible(true);
+        propertyform.pack();        
+        propertyform.setLocationRelativeTo(null);
+        propertyform.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
         
     }//GEN-LAST:event_jButton_Add_PropertyActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
+    public static void main(String args[]) {
+       
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SALE_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SALE_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SALE_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SALE_WINDOW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SALE_WINDOW().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Add_Client;
