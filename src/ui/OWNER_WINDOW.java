@@ -346,12 +346,56 @@ public class OWNER_WINDOW extends javax.swing.JFrame {
         
         P_OWNER owner = new P_OWNER();
         
-       
+        if( fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("") || address.trim().equals("") )
+        {
+            JOptionPane.showMessageDialog(null, "Enter The Required Owner Information [first name, last name, phone, address] ", "Add Owner", 2);
+        }
+        else
+        {
+            if(owner.addNewOwner(new P_OWNER(0, fname, lname, phone, email, address)))
+            {
+              JOptionPane.showMessageDialog(null, "New Owner Added To The System", "Add Owner", 1);
+            }
+          else{
+             JOptionPane.showMessageDialog(null, "Owner NOT Added To The System", "Add Owner", 2);
+           }
+        }
     }//GEN-LAST:event_jButton_Add_OwnerActionPerformed
 
     private void jButton_Edit_OwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Edit_OwnerActionPerformed
 
-      
+       String fname = jTextField_FName.getText();
+        String lname = jTextField_LName.getText();
+        String phone = jTextField_Phone.getText();
+        String email = jTextField_Email.getText();
+        String address = jTextArea_Address.getText();
+
+        P_OWNER owner = new P_OWNER();
+        
+        try{
+            
+            int ownerId = Integer.valueOf(jTextField_Id.getText());
+            
+            
+            if( fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("") || address.trim().equals("") )
+            {
+              JOptionPane.showMessageDialog(null, "Enter The Required Owner Information [first name, last name, phone, address] ", "Edit Owner", 2);
+            }
+           else
+            {
+                if(owner.editOwnerData(new P_OWNER(ownerId, fname, lname, phone, email, address)))
+                {
+                  JOptionPane.showMessageDialog(null, "Owner Data Edited", "Edit Owner", 1);
+                }
+              else{
+                 JOptionPane.showMessageDialog(null, "Owner Data NOT Edited", "Edit Owner", 2);
+               }
+            } 
+        }catch(Exception ex)
+          {
+            JOptionPane.showMessageDialog(null, ex.getMessage()+ " Enter a Valid Owner ID ", "Invalid Id", 0);
+          }
+        
         
     }//GEN-LAST:event_jButton_Edit_OwnerActionPerformed
 
