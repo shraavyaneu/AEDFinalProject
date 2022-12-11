@@ -21,10 +21,51 @@ import javax.swing.table.DefaultTableModel;
 public class SALE_WINDOW extends javax.swing.JFrame {
 
     public SALE_WINDOW() {
-       
+       initComponents();
+        
+        
+        Border panel_title_border = BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(255,10,0));
+        jPanel_Title.setBorder(panel_title_border);
+        
+        Border button_border = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(255,255,255));
+        jButton_Add_Sale.setBorder(button_border);
+        jButton_Edit_Sale.setBorder(button_border);
+        jButton_Remove_Sale.setBorder(button_border);
+        
+        fillJtableProperties();
+        
+        fillJtableClients();
+        
+        fillJtableSales();
+        
+        jTable_Clients.setRowHeight(40);
+        jTable_Properties.setRowHeight(40);
+        jTable_Sales.setRowHeight(40);
+        jTable_Clients.setSelectionBackground(new Color(27,150,77));
+        jTable_Properties.setSelectionBackground(new Color(20,120,10));
+        jTable_Sales.setSelectionBackground(new Color(0,70,0));
     }
     
-    
+    public void fillJtableProperties()
+    {
+        P_PROPERTY property = new P_PROPERTY();
+        ArrayList<P_PROPERTY> propertyList = property.propertiesList();
+        
+        String[] colNames = {"ID","Owner Id","Price"};
+        
+        Object[][] rows = new Object[propertyList.size()][3];
+        
+        for(int i = 0; i < propertyList.size(); i++)
+        {
+            rows[i][0] = propertyList.get(i).getId();
+            rows[i][1] = propertyList.get(i).getOwnerId();
+            rows[i][2] = propertyList.get(i).getPrice();
+        }
+        
+        DefaultTableModel model = new DefaultTableModel(rows, colNames);
+        jTable_Properties.setModel(model);
+        
+    }
     
     
     
