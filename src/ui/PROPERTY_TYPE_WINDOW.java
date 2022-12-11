@@ -1,8 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ui;
+
+
+import java.awt.Color;
+import java.util.HashMap;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 /**
  *
@@ -15,6 +25,42 @@ public class PROPERTY_TYPE_WINDOW extends javax.swing.JFrame {
      */
     public PROPERTY_TYPE_WINDOW() {
         initComponents();
+        
+        //[153,153,153]
+        // set border to the jpanel title
+        Border panel_title_border = BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(125,125,125));
+        jPanel_Title.setBorder(panel_title_border);
+        
+        // set border to the jbuttons
+        Border button_border = BorderFactory.createMatteBorder(3, 3, 3, 3, new Color(255,255,255));
+        jButton_Add_Type.setBorder(button_border);
+        jButton_Edit_Type.setBorder(button_border);
+        jButton_Remove_Type.setBorder(button_border);
+        jButton_Refresh.setBorder(button_border);
+        
+        // populate the list
+        fillTypeList();
+    }
+    
+    
+    // create a function to populate the JList using the TYPE HashMap
+    public void fillTypeList()
+    {
+        P_TYPE type = new P_TYPE();
+        
+        HashMap<String, Integer> map = type.getTypesMap();
+        
+        DefaultListModel listModel = new DefaultListModel();
+        
+        int i = 0;
+        
+        for(String typeName: map.keySet())
+        {
+            listModel.add(i, typeName);
+            i++;
+        }
+        
+        jList1.setModel(listModel);
     }
 
     /**
@@ -26,12 +72,12 @@ public class PROPERTY_TYPE_WINDOW extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jPanel_Title = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jTextField_Id = new javax.swing.JTextField();
         jTextField_Name = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -45,7 +91,9 @@ public class PROPERTY_TYPE_WINDOW extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel_Title.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+
+        jPanel_Title.setBackground(new java.awt.Color(0, 102, 102));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -58,26 +106,24 @@ public class PROPERTY_TYPE_WINDOW extends javax.swing.JFrame {
             .addGroup(jPanel_TitleLayout.createSequentialGroup()
                 .addGap(289, 289, 289)
                 .addComponent(jLabel1)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_TitleLayout.setVerticalGroup(
             jPanel_TitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_TitleLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                .addGap(65, 65, 65))
+                .addContainerGap())
         );
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel2.setText("ID:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel3.setText("ID:");
+        jLabel3.setText("Name:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel4.setText("Name:");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel5.setText("Description:");
+        jLabel4.setText("Description:");
 
         jTextField_Id.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
 
@@ -143,101 +189,101 @@ public class PROPERTY_TYPE_WINDOW extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jButton_Add_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_Edit_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_Remove_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_Refresh, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+            .addComponent(jPanel_Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_Name)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_Name)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton_Add_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_Edit_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton_Refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Remove_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
+                .addComponent(jPanel_Title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField_Id)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField_Name))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
-                .addGap(58, 58, 58)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton_Add_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Edit_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton_Remove_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(73, 73, 73))
+                    .addComponent(jButton_Add_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_Refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Edit_Type, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel_Title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_Add_TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add_TypeActionPerformed
-
+       
         // add a new type
         String name = jTextField_Name.getText();
         String description = jTextArea_Description.getText();
-
+        
         P_TYPE type = new P_TYPE(0,name,description);
-
+        
         if(!name.trim().equals(""))// if the type name is not empty
         {
-            if(type.execTypeQuery("add", type))
-            {
-                JOptionPane.showMessageDialog(null, "New Type Added", "Add Type", 1);
-            }else{
-                JOptionPane.showMessageDialog(null, "Operation Failed", "Add Type", 2);
-            }
+          if(type.execTypeQuery("add", type))
+          {
+              JOptionPane.showMessageDialog(null, "New Type Added", "Add Type", 1);
+          }else{
+              JOptionPane.showMessageDialog(null, "Operation Failed", "Add Type", 2);
+          }    
         }
         else{
             JOptionPane.showMessageDialog(null, "Enter The Type Name", "Empty Name", 2);
         }
-
+        
     }//GEN-LAST:event_jButton_Add_TypeActionPerformed
 
     private void jButton_Edit_TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Edit_TypeActionPerformed
-
+        
         try{
             // edit the selected type
             Integer id = Integer.valueOf(jTextField_Id.getText());
@@ -248,12 +294,12 @@ public class PROPERTY_TYPE_WINDOW extends javax.swing.JFrame {
 
             if(!name.trim().equals(""))// if the type name is not empty
             {
-                if(type.execTypeQuery("edit", type))
-                {
-                    JOptionPane.showMessageDialog(null, "Type Updated", "Edit Type", 1);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Operation Failed", "Edit Type", 2);
-                }
+              if(type.execTypeQuery("edit", type))
+              {
+                  JOptionPane.showMessageDialog(null, "Type Updated", "Edit Type", 1);
+              }else{
+                  JOptionPane.showMessageDialog(null, "Operation Failed", "Edit Type", 2);
+              }    
             }
             else{
                 JOptionPane.showMessageDialog(null, "Enter The Type Name", "Empty Name", 2);
@@ -262,60 +308,54 @@ public class PROPERTY_TYPE_WINDOW extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, ex.getMessage()+ " Enter a Valid Type ID ", "Invalid Id", 0);
         }
-
+        
     }//GEN-LAST:event_jButton_Edit_TypeActionPerformed
 
     private void jButton_Remove_TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Remove_TypeActionPerformed
-
+        
         try{
+        
+                 // remove the selected type
+                Integer id = Integer.valueOf(jTextField_Id.getText());
 
-            // remove the selected type
-            Integer id = Integer.valueOf(jTextField_Id.getText());
+                P_TYPE type = new P_TYPE(id,"","");
 
-            P_TYPE type = new P_TYPE(id,"","");
-
-            if(!jTextField_Id.getText().trim().equals(""))// if the type id is not empty
-            {
-                // show a confirmation message before deleting the type
-                int yes_or_no = JOptionPane.showConfirmDialog(null, "Do You Want To Delete This Type", "Delete Type", JOptionPane.YES_NO_OPTION);
-
-                if(yes_or_no == JOptionPane.YES_OPTION)
+                if(!jTextField_Id.getText().trim().equals(""))// if the type id is not empty
                 {
-                    if(type.execTypeQuery("remove", type))
-                    {
-                        JOptionPane.showMessageDialog(null, "Type Deleted", "Delete Type", 1);
+                  // show a confirmation message before deleting the type
+                  int yes_or_no = JOptionPane.showConfirmDialog(null, "Do You Want To Delete This Type", "Delete Type", JOptionPane.YES_NO_OPTION);
 
-                        // clear text fields after the delete
-                        jTextField_Id.setText("");
-                        jTextField_Name.setText("");
-                        jTextArea_Description.setText("");
+                  if(yes_or_no == JOptionPane.YES_OPTION)
+                  {
+                      if(type.execTypeQuery("remove", type))
+                      {
+                          JOptionPane.showMessageDialog(null, "Type Deleted", "Delete Type", 1);
+                          
+                          // clear text fields after the delete
+                          jTextField_Id.setText("");
+                          jTextField_Name.setText("");
+                          jTextArea_Description.setText("");
+                          
+                      }else{
+                          JOptionPane.showMessageDialog(null, "Operation Failed", "Delete Type", 2);
+                      }  
+                  }
 
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Operation Failed", "Delete Type", 2);
-                    }
                 }
-
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Enter The Type Id", "Empty Id", 2);
-            }
-
+                else{
+                    JOptionPane.showMessageDialog(null, "Enter The Type Id", "Empty Id", 2);
+                }
+            
         }catch(Exception ex)
         {
             JOptionPane.showMessageDialog(null, ex.getMessage()+ " Enter a Valid Type ID ", "Invalid Id", 0);
         }
-
+        
+        
     }//GEN-LAST:event_jButton_Remove_TypeActionPerformed
 
-    private void jButton_RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RefreshActionPerformed
-
-        // refresh the List data
-        fillTypeList();
-
-    }//GEN-LAST:event_jButton_RefreshActionPerformed
-
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-
+      
         // display the selected type from list to the text fields
         // getting the id using the hashmap
         P_TYPE type = new P_TYPE();
@@ -326,6 +366,13 @@ public class PROPERTY_TYPE_WINDOW extends javax.swing.JFrame {
         jTextField_Name.setText(type.getName());
         jTextArea_Description.setText(type.getDescription());
     }//GEN-LAST:event_jList1MouseClicked
+
+    private void jButton_RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RefreshActionPerformed
+        
+        // refresh the List data
+        fillTypeList();
+        
+    }//GEN-LAST:event_jButton_RefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,9 +415,9 @@ public class PROPERTY_TYPE_WINDOW extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Refresh;
     private javax.swing.JButton jButton_Remove_Type;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_Title;
