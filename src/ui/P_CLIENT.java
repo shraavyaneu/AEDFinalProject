@@ -24,7 +24,9 @@ public class P_CLIENT {
     
     public int getId()
     {
+        System.out.println("ui.P_CLIENT.getId()");
         return this.id;
+        
     }
     
     public void setId(int ID)
