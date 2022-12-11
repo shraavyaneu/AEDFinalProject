@@ -374,6 +374,46 @@ public class CLIENT_WINDOW extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_Add_ClientActionPerformed
 
     private void jButton_Edit_ClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Edit_ClientActionPerformed
+            
+        // edit the client data
+        // get the client data
+
+        String fname = jTextField_FName.getText();
+        String lname = jTextField_LName.getText();
+        String phone = jTextField_Phone.getText();
+        String email = jTextField_Email.getText();
+        String address = jTextArea_Address.getText();
+
+        P_CLIENT client = new P_CLIENT();
+
+        try{
+
+            int clientId = Integer.valueOf(jTextField_Id.getText());
+
+            // before editing the client data we need to check if the required data are empty
+            // required data -> first name, last name, phone, and address
+
+            if( fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("") || address.trim().equals("") )
+            {
+                JOptionPane.showMessageDialog(null, "Enter The Required Client Information [first name, last name, phone, address] ", "Edit Client", 2);
+            }
+            else
+            {
+                if(client.editClientData(new P_CLIENT(clientId, fname, lname, phone, email, address)))
+                {
+                    JOptionPane.showMessageDialog(null, "Client Data Edited", "Edit Client", 1);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Client Data NOT Edited", "Edit Client", 2);
+                }
+            }
+        }catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage()+ " Enter a Valid Client ID ", "Invalid Id", 0);
+        }
+
+
+
 
     }//GEN-LAST:event_jButton_Edit_ClientActionPerformed
 
