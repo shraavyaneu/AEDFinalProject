@@ -67,6 +67,52 @@ public class SALE_WINDOW extends javax.swing.JFrame {
         
     }
     
+     public void fillJtableClients()
+    {
+        P_CLIENT client = new P_CLIENT();
+        ArrayList<P_CLIENT> clientList = client.clientsList();
+        
+        String[] colNames = {"ID","First Name","Last Name"};
+        
+        Object[][] rows = new Object[clientList.size()][3];
+        
+        for(int i = 0; i < clientList.size(); i++)
+        {
+            rows[i][0] = clientList.get(i).getId();
+            rows[i][1] = clientList.get(i).getFname();
+            rows[i][2] = clientList.get(i).getLname();
+        }
+        
+        DefaultTableModel model = new DefaultTableModel(rows, colNames);
+        jTable_Clients.setModel(model);
+        
+        
+    }
+    
+    public void fillJtableSales()
+    {
+        P_SALE sale = new P_SALE();
+        ArrayList<P_SALE> salesList = sale.salesList();
+        
+        String[] colNames = {"ID","Property","Client","Price","Date"};
+        
+        Object[][] rows = new Object[salesList.size()][5];
+        
+        for(int i = 0; i < salesList.size(); i++)
+        {
+            rows[i][0] = salesList.get(i).getId();
+            rows[i][1] = salesList.get(i).getPropertyId();
+            rows[i][2] = salesList.get(i).getClientId();
+            rows[i][3] = salesList.get(i).getFinalPrice();
+            rows[i][4] = salesList.get(i).getSellingDate();
+        }
+        
+        DefaultTableModel model = new DefaultTableModel(rows, colNames);
+        jTable_Sales.setModel(model);
+        
+    }
+    
+    
     
     
     
@@ -463,7 +509,21 @@ public class SALE_WINDOW extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_Edit_SaleActionPerformed
 
     private void jButton_Remove_SaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Remove_SaleActionPerformed
+try{
+                int id = Integer.valueOf(jTextField_Id.getText());
 
+                if(new P_SALE().deleteSale(id))
+                {
+                    JOptionPane.showMessageDialog(null, "Sale Data Has Been Deleted", "Delete Sale", 1);
+                }
+                else{
+                       JOptionPane.showMessageDialog(null, "Sale Data Not Deleted", "Delete Sale", 2);
+                    }
+            }
+            catch(Exception ex)
+            {
+                JOptionPane.showMessageDialog(null, "Select The Sale Id", "Delete Sale Error", 2);
+            }
     }//GEN-LAST:event_jButton_Remove_SaleActionPerformed
 
     private void jTable_PropertiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_PropertiesMouseClicked
