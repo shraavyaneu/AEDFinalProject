@@ -1,6 +1,7 @@
 package ui;
 
 
+import model.P_TYPE;
 import java.awt.Color;
 import java.util.HashMap;
 import javax.swing.BorderFactory;
@@ -91,7 +92,7 @@ public class PROPERTY_TYPE_WINDOW extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
         jPanel_Title.setBackground(new java.awt.Color(0, 102, 102));
 

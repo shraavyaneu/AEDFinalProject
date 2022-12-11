@@ -1,6 +1,7 @@
-package ui;
+package model;
 
 
+import model.THE_CONNECTION;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,9 +12,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author shraavyarao
+ * @author Sakshi Shetty
  */
-public class P_OWNER {
+public class P_CLIENT {
     
     private int id;
     private String firstName;
@@ -24,7 +25,9 @@ public class P_OWNER {
     
     public int getId()
     {
+        
         return this.id;
+        
     }
     
     public void setId(int ID)
@@ -82,10 +85,9 @@ public class P_OWNER {
        this.address = ADDRESS; 
     }
     
+    public P_CLIENT(){}
     
-    public P_OWNER(){}
-    
-    public P_OWNER(int ID, String FNAME, String LNAME, String PHONE, String EMAIL, String ADDRESS)
+    public P_CLIENT(int ID, String FNAME, String LNAME, String PHONE, String EMAIL, String ADDRESS)
     {
         this.id = ID;
         this.firstName = FNAME;
@@ -95,106 +97,111 @@ public class P_OWNER {
         this.address = ADDRESS;
     }
     
-   
-    public boolean addNewOwner(P_OWNER owner)
+    
+    // create a function to add a new client
+    // first create the client in the database
+    public boolean addNewClient(P_CLIENT client)
     {
         PreparedStatement ps;
         
-        String addQuery = "INSERT INTO `property_owner`(`fname`, `lname`, `phone`, `email`, `address`) VALUES (?,?,?,?,?)";
+        String addQuery = "INSERT INTO `property_client`(`fname`, `lname`, `phone`, `email`, `address`) VALUES (?,?,?,?,?)";
         
         try {
             ps = THE_CONNECTION.getTheConnection().prepareStatement(addQuery);
-            ps.setString(1, owner.getFname());
-            ps.setString(2, owner.getLname());
-            ps.setString(3, owner.getPhone());
-            ps.setString(4, owner.getEmail());
-            ps.setString(5, owner.getAddress());
+            ps.setString(1, client.getFname());
+            ps.setString(2, client.getLname());
+            ps.setString(3, client.getPhone());
+            ps.setString(4, client.getEmail());
+            ps.setString(5, client.getAddress());
             
             return (ps.executeUpdate() > 0);
             
         } catch (SQLException ex) {
-            Logger.getLogger(P_OWNER.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(P_CLIENT.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
         
     }
     
     
-    public boolean editOwnerData(P_OWNER owner)
+    // create a function to edit the selected client data
+    public boolean editClientData(P_CLIENT client)
     {
         PreparedStatement ps;
         
-        String editQuery = "UPDATE `property_owner` SET `fname`=?,`lname`=?,`phone`=?,`email`=?,`address`=? WHERE `id`=?";
+        String editQuery = "UPDATE `property_client` SET `fname`=?,`lname`=?,`phone`=?,`email`=?,`address`=? WHERE `id`=?";
         
         try {
             ps = THE_CONNECTION.getTheConnection().prepareStatement(editQuery);
-            ps.setString(1, owner.getFname());
-            ps.setString(2, owner.getLname());
-            ps.setString(3, owner.getPhone());
-            ps.setString(4, owner.getEmail());
-            ps.setString(5, owner.getAddress());
-            ps.setInt(6, owner.getId());
+            ps.setString(1, client.getFname());
+            ps.setString(2, client.getLname());
+            ps.setString(3, client.getPhone());
+            ps.setString(4, client.getEmail());
+            ps.setString(5, client.getAddress());
+            ps.setInt(6, client.getId());
             
             return (ps.executeUpdate() > 0);
             
         } catch (SQLException ex) {
-            Logger.getLogger(P_OWNER.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(P_CLIENT.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
     
-
-    public boolean deleteOwner(int ownerId)
+    
+    // create a function to delete the selected client
+    public boolean deleteClient(int clientId)
     {
         PreparedStatement ps;
         
-        String deleteQuery = "DELETE FROM `property_owner` WHERE `id`=?";
+        String deleteQuery = "DELETE FROM `property_client` WHERE `id`=?";
         
         try {
             ps = THE_CONNECTION.getTheConnection().prepareStatement(deleteQuery);
             
-            ps.setInt(1, ownerId);
+            ps.setInt(1, clientId);
             
             return (ps.executeUpdate() > 0);
             
         } catch (SQLException ex) {
-            Logger.getLogger(P_OWNER.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(P_CLIENT.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         } 
     }
     
     
-    public ArrayList<P_OWNER> ownersList()
+    // create a unction to return an arraylist of clients
+    public ArrayList<P_CLIENT> clientsList()
     {
-        ArrayList<P_OWNER> list = new ArrayList<>();
+        ArrayList<P_CLIENT> list = new ArrayList<>();
         
         Statement st;
         ResultSet rs;
         
-        String selectQuery = "SELECT * FROM `property_owner`";
+        String selectQuery = "SELECT * FROM `property_client`";
         
         try {
             
             st = THE_CONNECTION.getTheConnection().createStatement();
             rs = st.executeQuery(selectQuery);
             
-            P_OWNER owner;
+            P_CLIENT client;
             
             while (rs.next()) {
                 
-                owner = new P_OWNER(rs.getInt(1),
+                client = new P_CLIENT(rs.getInt(1),
                                     rs.getString(2), 
                                     rs.getString(3),
                                     rs.getString(4), 
                                     rs.getString(5), 
                                     rs.getString(6));
                 
-                list.add(owner);
+                list.add(client);
                 
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(P_OWNER.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(P_CLIENT.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return list;

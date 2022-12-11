@@ -1,4 +1,4 @@
-package ui;
+package model;
 
 
 import java.io.File;
@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import ui.THE_CONNECTION;
 
 /**
  *

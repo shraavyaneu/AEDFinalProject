@@ -1,5 +1,6 @@
 package ui;
 
+import model.THE_CONNECTION;
 import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

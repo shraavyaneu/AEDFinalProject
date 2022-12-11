@@ -1,6 +1,7 @@
 package ui;
 
 
+import model.P_OWNER;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -94,12 +95,12 @@ public class OWNER_WINDOW extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
         jPanel_Title.setBackground(new java.awt.Color(204, 204, 255));
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 255));
-        jLabel1.setFont(new java.awt.Font("Symbol", 1, 30)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 255));
         jLabel1.setText("Owner Details");
 

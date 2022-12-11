@@ -1,7 +1,8 @@
 package ui;
 
 
-import real_estate_app.P_PROPERTY;
+//import real_estate_app.P_PROPERTY;
+import model.P_PROPERTY;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
