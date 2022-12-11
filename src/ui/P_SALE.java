@@ -73,6 +73,70 @@ public class P_SALE {
         this.sellingDate = sellingDate;
     }
    
+    public boolean addNewSale(P_SALE sale)
+    {
+        PreparedStatement ps;
+       
+        String addQuery = "INSERT INTO `sale`(`property_id`, `client_id`, `final_price`, `sale_date`) VALUES (?,?,?,?)";
+       
+        try {
+            ps = THE_CONNECTION.getTheConnection().prepareStatement(addQuery);
+            ps.setInt(1, sale.getPropertyId());
+            ps.setInt(2, sale.getClientId());
+            ps.setString(3, sale.getFinalPrice());
+            ps.setString(4, sale.getSellingDate());
+            
+            return (ps.executeUpdate() > 0);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(P_SALE.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        
+    }
+    
+    public boolean editSale(P_SALE sale)
+    {
+        PreparedStatement ps;
+        
+        String editQuery = "UPDATE `sale` SET `property_id`=?,`client_id`=?,`final_price`=?,`sale_date`=? WHERE `id`=?";
+        
+        try {
+            ps = THE_CONNECTION.getTheConnection().prepareStatement(editQuery);
+            ps.setInt(1, sale.getPropertyId());
+            ps.setInt(2, sale.getClientId());
+            ps.setString(3, sale.getFinalPrice());
+            ps.setString(4, sale.getSellingDate());
+            ps.setInt(5, sale.getId());
+            
+            return (ps.executeUpdate() > 0);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(P_SALE.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
+    
+    public boolean deleteSale(int saleId)
+    {
+        PreparedStatement ps;
+        
+        String deleteQuery = "DELETE FROM `sale` WHERE `id`=?";
+        
+        try {
+            ps = THE_CONNECTION.getTheConnection().prepareStatement(deleteQuery);
+            
+            ps.setInt(1, saleId);
+            
+            return (ps.executeUpdate() > 0);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(P_SALE.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } 
+    }
+    
     
  
     public ArrayList<P_SALE> salesList()
