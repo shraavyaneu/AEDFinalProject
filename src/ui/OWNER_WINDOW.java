@@ -446,6 +446,13 @@ public class OWNER_WINDOW extends javax.swing.JFrame {
 
     // get owner data on jtable mouse click
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int selectedRowIndex = jTable1.getSelectedRow();
+        jTextField_Id.setText(jTable1.getValueAt(selectedRowIndex, 0).toString());
+        jTextField_FName.setText(jTable1.getValueAt(selectedRowIndex, 1).toString());
+        jTextField_LName.setText(jTable1.getValueAt(selectedRowIndex, 2).toString());
+        jTextField_Phone.setText(jTable1.getValueAt(selectedRowIndex, 3).toString());
+        jTextField_Email.setText(jTable1.getValueAt(selectedRowIndex, 4).toString());
+        jTextArea_Address.setText(jTable1.getValueAt(selectedRowIndex, 5).toString());
         
       
     }//GEN-LAST:event_jTable1MouseClicked
@@ -456,6 +463,24 @@ public class OWNER_WINDOW extends javax.swing.JFrame {
 
     private void jButton_Owner_PropertiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Owner_PropertiesActionPerformed
     
+         try
+        {
+            
+            int selectedRowIndex = jTable1.getSelectedRow();
+            int id = Integer.valueOf(jTable1.getValueAt(selectedRowIndex, 0).toString());
+            
+            // set the owner id
+            OWNER_PROPERTIES_FORM ownerPropertiesform = new OWNER_PROPERTIES_FORM(id);
+            
+            ownerPropertiesform.setVisible(true);
+            ownerPropertiesform.pack();        
+            ownerPropertiesform.setLocationRelativeTo(null);
+            ownerPropertiesform.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            
+        }catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Select The Owner From The Table First", "No Owner Selected", 2);
+        }
         
     }//GEN-LAST:event_jButton_Owner_PropertiesActionPerformed
 
