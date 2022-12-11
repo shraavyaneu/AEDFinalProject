@@ -39,6 +39,27 @@ public class OWNER_WINDOW extends javax.swing.JFrame {
         P_OWNER owner = new P_OWNER();
         ArrayList<P_OWNER> ownersList = owner.ownersList();
         
+        String[] colNames = {"ID","First Name","Last Name","Phone","Email","Address"};
+        
+        Object[][] rows = new Object[ownersList.size()][6];
+        
+        for(int i = 0; i < ownersList.size(); i++)
+        {
+            rows[i][0] = ownersList.get(i).getId();
+            rows[i][1] = ownersList.get(i).getFname();
+            rows[i][2] = ownersList.get(i).getLname();
+            rows[i][3] = ownersList.get(i).getPhone();
+            rows[i][4] = ownersList.get(i).getEmail();
+            rows[i][5] = ownersList.get(i).getAddress();
+        }
+        
+        DefaultTableModel model = new DefaultTableModel(rows, colNames);
+        jTable1.setModel(model);
+       
+        jTable1.setRowHeight(40);
+        jTable1.setSelectionBackground(new Color(235,47,6));
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(25);
+        jTable1.getColumnModel().getColumn(5).setPreferredWidth(150);
         
     }
     
