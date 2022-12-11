@@ -342,6 +342,34 @@ public class CLIENT_WINDOW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_Add_ClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add_ClientActionPerformed
+        // add a new client
+
+        // get the client data
+        String fname = jTextField_FName.getText();
+        String lname = jTextField_LName.getText();
+        String phone = jTextField_Phone.getText();
+        String email = jTextField_Email.getText();
+        String address = jTextArea_Address.getText();
+
+        P_CLIENT client = new P_CLIENT();
+
+        // before inserting a new client we need to check if the required data are empty
+        // required data -> first name, last name, phone, and address
+
+        if( fname.trim().equals("") || lname.trim().equals("") || phone.trim().equals("") || address.trim().equals("") )
+        {
+            JOptionPane.showMessageDialog(null, "Enter The Required Client Information [first name, last name, phone, address] ", "Add Client", 2);
+        }
+        else
+        {
+            if(client.addNewClient(new P_CLIENT(0, fname, lname, phone, email, address)))
+            {
+               JOptionPane.showMessageDialog(null, "New Client Added To The System", "Add Client", 1);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Client not Added To The System", "Add Client", 2);
+            }
+        }
 
     }//GEN-LAST:event_jButton_Add_ClientActionPerformed
 
