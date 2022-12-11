@@ -412,12 +412,51 @@ public class CLIENT_WINDOW extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex.getMessage()+ " Enter a Valid Client ID ", "Invalid Id", 0);
         }
 
-
-
-
     }//GEN-LAST:event_jButton_Edit_ClientActionPerformed
 
     private void jButton_Remove_ClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Remove_ClientActionPerformed
+
+        try{
+
+            // deleting the selected client from the system
+            int clientId = Integer.valueOf(jTextField_Id.getText());
+
+            P_CLIENT client = new P_CLIENT();
+
+            if(jTextField_Id.getText().trim().equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Enter the Client ID", "Empty ID", 2);
+            }
+            else{
+
+                // show a confirmation message before deleting the type
+                int yes_or_no = JOptionPane.showConfirmDialog(null, "Do You Want To Delete This Client", "Delete Client", JOptionPane.YES_NO_OPTION);
+
+                if(yes_or_no == JOptionPane.YES_OPTION)
+                {
+                    if(client.deleteClient(clientId))
+                    {
+                        JOptionPane.showMessageDialog(null, "Client Data Deleted", "Delete Client", 1);
+                        
+                        // clear text fields after the delete
+                          jTextField_Id.setText("");
+                          jTextField_FName.setText("");
+                          jTextField_LName.setText("");
+                          jTextField_Email.setText("");
+                          jTextField_Phone.setText("");
+                          jTextArea_Address.setText("");
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Operation Failed", "Delete Client", 2);
+                    }
+                }
+
+            }
+
+        }catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex.getMessage()+ " Enter a Valid Client ID ", "Invalid Id", 0);
+        }
 
 
     }//GEN-LAST:event_jButton_Remove_ClientActionPerformed
