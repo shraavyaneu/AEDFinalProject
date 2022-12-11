@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Shraavya
+ * @author shraavyarao
  */
 public class SHOW_PROPERTIES_WINDOW extends javax.swing.JFrame {
 

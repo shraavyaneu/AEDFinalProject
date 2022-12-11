@@ -17,7 +17,7 @@ import ui.THE_CONNECTION;
 
 /**
  *
- * @author Shraavya
+ * @author shraavyarao
  * @author Sakshi Shetty
  */
 public class P_PROPERTY {

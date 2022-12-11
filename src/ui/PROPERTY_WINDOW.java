@@ -18,7 +18,7 @@ import javax.swing.border.Border;
 /**
  *
  * @author Lokesh
- * @author Shraavya
+ * @author shraavyarao
  */
 public class PROPERTY_WINDOW extends javax.swing.JFrame {
 
