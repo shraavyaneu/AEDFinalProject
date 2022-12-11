@@ -42,6 +42,19 @@ public class OWNER_PROPERTIES_FORM extends javax.swing.JFrame {
             rows[i][7] = propertyList.get(i).getBathrooms();
             rows[i][8] = propertyList.get(i).getAge();
             
+             if(propertyList.get(i).isBlacone()) rows[i][9] = "YES" ;
+            else{rows[i][9] = "NO" ;}
+            
+            if(propertyList.get(i).isPool()) rows[i][10] = "YES" ;
+            else{rows[i][10] = "NO" ;}
+            
+            if(propertyList.get(i).isBackyard()) rows[i][11] = "YES" ;
+            else{rows[i][11] = "NO" ;}
+            
+            if(propertyList.get(i).isGarage()) rows[i][12] = "YES" ;
+            else{rows[i][12] = "NO" ;}
+            
+            rows[i][13] = propertyList.get(i).getDescription();
             
         }
         
