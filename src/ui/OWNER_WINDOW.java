@@ -401,7 +401,47 @@ public class OWNER_WINDOW extends javax.swing.JFrame {
 
     private void jButton_Remove_OwnerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Remove_OwnerActionPerformed
 
-      
+      try{
+            
+             // deleting the selected owner from the system
+            int ownerId = Integer.valueOf(jTextField_Id.getText());
+
+            P_OWNER owner = new P_OWNER();
+
+            if(jTextField_Id.getText().trim().equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Enter the Owner ID", "Empty ID", 2);
+            }
+            else{
+            
+                
+             int yes_or_no = JOptionPane.showConfirmDialog(null, "Do You Want To Delete This Owner", "Delete Owner", JOptionPane.YES_NO_OPTION);
+
+              if(yes_or_no == JOptionPane.YES_OPTION)
+                  {
+                      if(owner.deleteOwner(ownerId))
+                      {
+                          JOptionPane.showMessageDialog(null, "Owner Data Deleted", "Delete Owner", 1);
+                          
+                          jTextField_Id.setText("");
+                          jTextField_FName.setText("");
+                          jTextField_LName.setText("");
+                          jTextField_Email.setText("");
+                          jTextField_Phone.setText("");
+                          jTextArea_Address.setText("");
+                          
+                      }else{
+                          JOptionPane.showMessageDialog(null, "Operation Failed", "Delete Owner", 2);
+                      }  
+                  }
+            
+            }    
+            
+        }catch(Exception ex)
+          {
+            JOptionPane.showMessageDialog(null, ex.getMessage()+ " Enter a Valid Owner ID ", "Invalid Id", 0);
+          }
+        
     }//GEN-LAST:event_jButton_Remove_OwnerActionPerformed
 
     // get owner data on jtable mouse click
@@ -411,7 +451,7 @@ public class OWNER_WINDOW extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton_RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_RefreshActionPerformed
-      
+       fillJtableWithOwnersData();
     }//GEN-LAST:event_jButton_RefreshActionPerformed
 
     private void jButton_Owner_PropertiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Owner_PropertiesActionPerformed
