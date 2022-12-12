@@ -20,6 +20,11 @@ import javax.swing.border.Border;
  */
 public class LOGIN_WINDOW extends javax.swing.JFrame {
 
+//    private Object jtxtName;
+//    private Object jtxtEmail;
+//    private Object jtxtUsername;
+//    private Object jtxtPw;
+
     /**
      * Creates new form LOGIN_WINDOW
      */
@@ -47,24 +52,30 @@ public class LOGIN_WINDOW extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel_Image = new javax.swing.JLabel();
         jLabel_Title = new javax.swing.JLabel();
         jTextField_Username = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton_Login = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton_Login1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jtxtUsername = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jtxtPw = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        jtxtName = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jtxtEmail = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel_Image.setBackground(new java.awt.Color(255, 255, 204));
-        jLabel_Image.setOpaque(true);
+        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
 
         jLabel_Title.setFont(new java.awt.Font("Arial", 1, 70)); // NOI18N
         jLabel_Title.setText("LOGIN");
 
+        jTextField_Username.setBackground(new java.awt.Color(153, 204, 255));
         jTextField_Username.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField_Username.setForeground(new java.awt.Color(153, 153, 153));
         jTextField_Username.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -81,6 +92,7 @@ public class LOGIN_WINDOW extends javax.swing.JFrame {
             }
         });
 
+        jPasswordField1.setBackground(new java.awt.Color(153, 204, 255));
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(153, 153, 153));
         jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -109,18 +121,98 @@ public class LOGIN_WINDOW extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Modern No. 20", 1, 18)); // NOI18N
         jLabel2.setText("USERNAME:");
 
+        jButton_Login1.setBackground(new java.awt.Color(0, 102, 204));
+        jButton_Login1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton_Login1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton_Login1.setText("Register");
+        jButton_Login1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton_Login1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_Login1ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Modern No. 20", 1, 18)); // NOI18N
+        jLabel3.setText("USERNAME:");
+
+        jtxtUsername.setBackground(new java.awt.Color(153, 204, 255));
+        jtxtUsername.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtxtUsername.setForeground(new java.awt.Color(153, 153, 153));
+        jtxtUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxtUsernameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtxtUsernameFocusLost(evt);
+            }
+        });
+        jtxtUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtUsernameActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Modern No. 20", 1, 18)); // NOI18N
+        jLabel4.setText("PASSWORD:");
+
+        jtxtPw.setBackground(new java.awt.Color(153, 204, 255));
+        jtxtPw.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtxtPw.setForeground(new java.awt.Color(153, 153, 153));
+        jtxtPw.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxtPwFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtxtPwFocusLost(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Modern No. 20", 1, 18)); // NOI18N
+        jLabel5.setText("NAME:");
+
+        jtxtName.setBackground(new java.awt.Color(153, 204, 255));
+        jtxtName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtxtName.setForeground(new java.awt.Color(153, 153, 153));
+        jtxtName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxtNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtxtNameFocusLost(evt);
+            }
+        });
+        jtxtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtNameActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Modern No. 20", 1, 18)); // NOI18N
+        jLabel6.setText("EMAIL:");
+
+        jtxtEmail.setBackground(new java.awt.Color(153, 204, 255));
+        jtxtEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtxtEmail.setForeground(new java.awt.Color(153, 153, 153));
+        jtxtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxtEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtxtEmailFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel_Title))
+                        .addComponent(jLabel_Title)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton_Login, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                             .addComponent(jPasswordField1)
@@ -129,28 +221,61 @@ public class LOGIN_WINDOW extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(26, 26, 26))
+                                .addGap(0, 245, Short.MAX_VALUE))
+                            .addComponent(jButton_Login1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE))
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtxtPw)
+                            .addComponent(jtxtUsername)
+                            .addComponent(jtxtEmail)
+                            .addComponent(jtxtName)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 265, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel_Image, javax.swing.GroupLayout.PREFERRED_SIZE, 678, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(101, 101, 101)
+                .addContainerGap(111, Short.MAX_VALUE)
                 .addComponent(jLabel_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxtName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jButton_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jtxtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtxtPw, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Login1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,7 +288,7 @@ public class LOGIN_WINDOW extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         pack();
@@ -237,8 +362,37 @@ public class LOGIN_WINDOW extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Please enter Username and Password","Empty Field",2);
         }
-        else{
-          
+        else if( 
+                username.trim().toLowerCase().contains("@user") )
+                {
+                try {
+                
+                ps = THE_CONNECTION.getTheConnection().prepareStatement(selectquery);
+                
+                ps.setString(1, username);
+                ps.setString(2, password);
+                
+                rs = ps.executeQuery();
+                
+                if(rs.next())
+                {
+                   // show the main form
+                    ClientMainJFrame mainform = new ClientMainJFrame();
+                    mainform.setVisible(true);
+                    mainform.pack();
+                    // close the login window
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Invalid Credentials","Wrong Data",2);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(LOGIN_WINDOW.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                }
+        else if (username.trim().toLowerCase().contains("admin"))    
+        { 
             try {
                 
                 ps = THE_CONNECTION.getTheConnection().prepareStatement(selectquery);
@@ -265,9 +419,127 @@ public class LOGIN_WINDOW extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(LOGIN_WINDOW.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
         }
+        
+        else if (username.trim().toLowerCase().contains("@property"))    
+        { 
+            try {
+                
+                ps = THE_CONNECTION.getTheConnection().prepareStatement(selectquery);
+                
+                ps.setString(1, username);
+                ps.setString(2, password);
+                
+                rs = ps.executeQuery();
+                
+                if(rs.next())
+                {
+                   // show the main form
+                    PropertyMainJFrame mainform = new PropertyMainJFrame();
+                    mainform.setVisible(true);
+                    mainform.pack();
+                    mainform.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    // close the login window
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Invalid Credentials","Wrong Data",2);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(LOGIN_WINDOW.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if (username.trim().toLowerCase().contains("@owner"))    
+        { 
+            try {
+                
+                ps = THE_CONNECTION.getTheConnection().prepareStatement(selectquery);
+                
+                ps.setString(1, username);
+                ps.setString(2, password);
+                
+                rs = ps.executeQuery();
+                
+                if(rs.next())
+                {
+                   // show the main form
+                    OWNER_WINDOW mainform = new OWNER_WINDOW();
+                    mainform.setVisible(true);
+                    mainform.pack();
+                    // close the login window
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Invalid Credentials","Wrong Data",2);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(LOGIN_WINDOW.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if (username.trim().toLowerCase().contains("@sales"))    
+        { 
+            try {
+                
+                ps = THE_CONNECTION.getTheConnection().prepareStatement(selectquery);
+                
+                ps.setString(1, username);
+                ps.setString(2, password);
+                
+                rs = ps.executeQuery();
+                
+                if(rs.next())
+                {
+                   // show the main form
+                    SALE_WINDOW mainform = new SALE_WINDOW();
+                    mainform.setVisible(true);
+                    mainform.pack();
+                    // close the login window
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Invalid Credentials","Wrong Data",2);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(LOGIN_WINDOW.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else if (username.trim().toLowerCase().contains("@clients"))    
+        { 
+            try {
+                
+                ps = THE_CONNECTION.getTheConnection().prepareStatement(selectquery);
+                
+                ps.setString(1, username);
+                ps.setString(2, password);
+                
+                rs = ps.executeQuery();
+                
+                if(rs.next())
+                {
+                   // show the main form
+                    CLIENT_WINDOW mainform = new CLIENT_WINDOW();
+                    mainform.setVisible(true);
+                    mainform.pack();
+                    mainform.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    // close the login window
+                    this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Invalid Credentials","Wrong Data",2);
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(LOGIN_WINDOW.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+            
         
        
     }//GEN-LAST:event_jButton_LoginActionPerformed
@@ -275,6 +547,78 @@ public class LOGIN_WINDOW extends javax.swing.JFrame {
     private void jTextField_UsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_UsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField_UsernameActionPerformed
+
+    private void jButton_Login1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Login1ActionPerformed
+        // TODO add your handling code here:
+        String name = jtxtName.getText();
+        String email = jtxtEmail.getText();
+        String username = jtxtUsername.getText();
+        String pwd = jtxtPw.getText();
+        
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        String selectq = "INSERT INTO `users`(username, password) VALUES (?,?)";
+        if(name.trim().toLowerCase().equals("")||
+                email.trim().toLowerCase().equals("")||
+                username.trim().toLowerCase().equals("")||
+                pwd.trim().toLowerCase().equals("")){
+           JOptionPane.showMessageDialog(null,"Please enter all details","Empty Field",2);
+        }
+        else{
+            
+            try {
+                ps = THE_CONNECTION.getTheConnection().prepareStatement(selectq);
+                ps.setString(1, username);
+                ps.setString(2, pwd);
+                ps.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(LOGIN_WINDOW.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Your Account Has Been Created, Kindly Login To Continue.");
+
+        }
+    }//GEN-LAST:event_jButton_Login1ActionPerformed
+
+    private void jtxtUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtUsernameFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtUsernameFocusGained
+
+    private void jtxtUsernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtUsernameFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtUsernameFocusLost
+
+    private void jtxtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtUsernameActionPerformed
+
+    private void jtxtPwFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtPwFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtPwFocusGained
+
+    private void jtxtPwFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtPwFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtPwFocusLost
+
+    private void jtxtNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtNameFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtNameFocusGained
+
+    private void jtxtNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtNameFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtNameFocusLost
+
+    private void jtxtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtNameActionPerformed
+
+    private void jtxtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtEmailFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtEmailFocusGained
+
+    private void jtxtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxtEmailFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtEmailFocusLost
 
     /**
      * @param args the command line arguments
@@ -314,12 +658,20 @@ public class LOGIN_WINDOW extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Login;
+    private javax.swing.JButton jButton_Login1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel_Image;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel_Title;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField_Username;
+    private javax.swing.JPasswordField jtxtEmail;
+    private javax.swing.JTextField jtxtName;
+    private javax.swing.JPasswordField jtxtPw;
+    private javax.swing.JTextField jtxtUsername;
     // End of variables declaration//GEN-END:variables
 }
